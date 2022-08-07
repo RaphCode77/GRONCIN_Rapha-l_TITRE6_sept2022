@@ -1,0 +1,17 @@
+{
+  "name": "cakephp_festivals_raphaelgroncin",
+  "version": "1.0.0",
+  "description": "cakephp_festivals_socialmedia",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "festivals"
+  ],
+  "author": "Raphaël GRONCIN",
+  "license": "ISC"
+}
