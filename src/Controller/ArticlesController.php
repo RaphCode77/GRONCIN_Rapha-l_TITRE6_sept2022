@@ -31,6 +31,6 @@ class ArticlesController extends AppController
             }
             $this->Flash->error(__('Impossible d\'ajouter votre article.'));
         }
-        $this->set(compact('article', $article));
+        $this->set('article', $article);
     }
 }

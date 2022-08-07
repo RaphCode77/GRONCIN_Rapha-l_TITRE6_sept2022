@@ -1,6 +1,7 @@
 <!-- templates/Articles/index.php -->
 
 <h1>Tous les articles du Blog</h1>
+<?= $this->Html->link('Ajouter un article', ['action' => 'add']) ?>
 <table>
     <tr>
         <th>Id</th>
