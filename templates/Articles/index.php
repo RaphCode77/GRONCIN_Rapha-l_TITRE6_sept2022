@@ -17,7 +17,7 @@
             <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>
         </td>
         <td>
-            <?= $article->created->format(DATE_RFC850) ?>
+            <?= $article->created ?>
         </td>
     </tr>
     <?php endforeach; ?>
