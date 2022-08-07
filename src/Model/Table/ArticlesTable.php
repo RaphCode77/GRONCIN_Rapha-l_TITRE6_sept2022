@@ -10,6 +10,10 @@ class ArticlesTable extends Table
     public function initialize(array $config): void
     {
         $this->addBehavior('Timestamp');
+        // Ajoute juste la relation belongsTo avec CategoriesTable
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
+        ]);
     }
 
     public function validationDefault(Validator $validator): Validator
@@ -22,6 +26,7 @@ class ArticlesTable extends Table
 
         return $validator;
     }
+
 
 
 }

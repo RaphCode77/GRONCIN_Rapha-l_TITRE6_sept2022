@@ -35,7 +35,7 @@ class ArticlesController extends AppController
     }
 
     public function edit($id = null)
-{
+    {
     $article = $this->Articles->get($id);
     if ($this->request->is(['post', 'put'])) {
         $this->Articles->patchEntity($article, $this->request->getData());
@@ -47,5 +47,16 @@ class ArticlesController extends AppController
     }
 
     $this->set('article', $article);
-}
+    }
+
+    public function delete($id)
+    {
+    $this->request->allowMethod(['post', 'delete']);
+
+    $article = $this->Articles->get($id);
+    if ($this->Articles->delete($article)) {
+        $this->Flash->success(__("L'article avec l'id: {0} a été supprimé.", h($id)));
+        return $this->redirect(['action' => 'index']);
+        }
+    }
 }

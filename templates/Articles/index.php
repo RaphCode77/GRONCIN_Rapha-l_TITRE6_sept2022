@@ -21,6 +21,13 @@
             <?= $article->created ?>
         </td>
         <td>
+            <?= $this->Form->postLink( //postLink permet la création d'un lien utilisant du JS pour supprimer 
+            //l'article en faisant une requête POST
+                'Supprimer',
+                ['action' => 'delete', $article->id],
+                ['confirm' => 'Êtes-vous sûr ?'])
+            ?>
+        <td>
             <?= $this->Html->link('Modifier', ['action' => 'edit', $article->id]) ?>
         </td>
     </tr>
