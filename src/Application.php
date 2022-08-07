@@ -34,6 +34,7 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
+
 class Application extends BaseApplication
 {
     /**
@@ -43,6 +44,8 @@ class Application extends BaseApplication
      */
     public function bootstrap(): void
     {
+        $this->addPlugin('Authentication');
+        
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
