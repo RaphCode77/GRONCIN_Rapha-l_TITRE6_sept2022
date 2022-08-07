@@ -20,6 +20,9 @@
         <td>
             <?= $article->created ?>
         </td>
+        <td>
+            <?= $this->Html->link('Modifier', ['action' => 'edit', $article->id]) ?>
+        </td>
     </tr>
     <?php endforeach; ?>
 </table>
