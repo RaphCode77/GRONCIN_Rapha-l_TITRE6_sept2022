@@ -27,6 +27,11 @@ use Cake\Http\MiddlewareQueue;
 use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Authentication\AuthenticationService;
+use Authentication\AuthenticationServiceInterface;
+use Authentication\AuthenticationServiceProviderInterface;
+use Authentication\Middleware\AuthenticationMiddleware;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Application setup class.
@@ -35,7 +40,9 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  * want to use in your application.
  */
 
-class Application extends BaseApplication
+class Application extends BaseApplication implements AuthenticationServiceProviderInterface
+
+    
 {
     /**
      * Load all the application configuration and bootstrap logic.
@@ -45,7 +52,7 @@ class Application extends BaseApplication
     public function bootstrap(): void
     {
         $this->addPlugin('Authentication');
-        
+
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
@@ -108,6 +115,36 @@ class Application extends BaseApplication
 
         return $middlewareQueue;
     }
+
+    public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
+{
+    $authenticationService = new AuthenticationService([
+        'unauthenticatedRedirect' => '/users/login',
+        'queryParam' => 'redirect',
+    ]);
+
+    // Charger les identificateurs. S'assurer que nous vérifions les champs email et password
+    $authenticationService->loadIdentifier('Authentication.Password', [
+        'fields' => [
+            'username' => 'email',
+            'password' => 'password',
+        ]
+    ]);
+
+    // Charger les authentificateurs. En général vous voudrez mettre Session en premier.
+    $authenticationService->loadAuthenticator('Authentication.Session');
+    // Configurer la connexion par formulaire pour qu'elle aille chercher
+    // les champs email et password.
+    $authenticationService->loadAuthenticator('Authentication.Form', [
+        'fields' => [
+            'username' => 'email',
+            'password' => 'password',
+        ],
+        'loginUrl' => '/users/login',
+    ]);
+
+    return $authenticationService;
+}
 
     /**
      * Register application container services.
