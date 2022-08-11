@@ -39,9 +39,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
-
 class Application extends BaseApplication implements AuthenticationServiceProviderInterface
-
     
 {
     /**
@@ -51,8 +49,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
      */
     public function bootstrap(): void
     {
-        $this->addPlugin('Authentication');
-
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
