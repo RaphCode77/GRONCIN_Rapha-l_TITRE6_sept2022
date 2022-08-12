@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
         <div class="top-nav-links">
             <a rel="noopener" href="https://projets/cakephp_festivals_raphaelgroncin/articles">Articles</a>
-            <a rel="noopener" href="https://api.cakephp.org/">API</a>
+            <a rel="noopener" href="https://api.cakephp.org/"></a>
         </div>
     </nav>
     <main class="main">
