@@ -38,7 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>RS | </span>Festivals</a>
+            <a href="<?= $this->Url->build('/') ?>"><span>Festiv</span>'App</a>
         </div>
         <div class="top-nav-links">
             <a rel="noopener" href="https://projets/cakephp_festivals_raphaelgroncin/articles">Articles</a>
